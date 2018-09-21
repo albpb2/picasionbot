@@ -1,10 +1,12 @@
-﻿
+﻿using System;
+using System.Linq;
 using Microsoft.AspNetCore.Mvc;
+using PicasionBot.Application;
+using PicasionBot.Application.Dtos;
+using PicasionBot.Application.Dtos.Actions;
 
 namespace PicasionBot.Controllers
 {
-    using Application.Dtos;
-
     [Route("[controller]")]
     [ApiController]
     public class TurnController : ControllerBase
@@ -12,7 +14,8 @@ namespace PicasionBot.Controllers
         [HttpPost]
         public BaseAction Run(State state)
         {
-            return new BaseAction();
+            var firstAlly = state?.Allies?.FirstOrDefault();
+            return ActionsFactory.Rest(firstAlly?.Id ?? Guid.Empty);
         }
     }
 }

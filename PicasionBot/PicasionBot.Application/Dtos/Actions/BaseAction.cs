@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace PicasionBot.Application.Dtos
+namespace PicasionBot.Application.Dtos.Actions
 {
-    public class BaseAction
+    public abstract class BaseAction
     {
         public string Action { get; set; }
         public Guid Source { get; set; }
