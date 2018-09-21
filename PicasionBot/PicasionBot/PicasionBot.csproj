@@ -16,4 +16,8 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="3.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\PicasionBot.Application\PicasionBot.Application.csproj" />
+  </ItemGroup>
+
 </Project>

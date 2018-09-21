@@ -1,18 +1,16 @@
-﻿using System.Net.Http;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Xunit;
 
 namespace PicasionBot.IntegrationTests.Controllers
 {
-    public class ProbeControllerShould : IClassFixture<WebApplicationFactory<Startup>>
+    public class ProbeControllerShould : ControllerTestsBase
     {
         private const string ControllerBaseUri = "/probe";
-        private readonly HttpClient client;
 
         public ProbeControllerShould(WebApplicationFactory<Startup> factory)
+            : base(factory)
         {
-            this.client = factory.CreateClient();
         }
 
         [Fact]
