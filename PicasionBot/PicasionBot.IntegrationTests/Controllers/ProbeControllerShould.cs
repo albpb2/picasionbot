@@ -13,6 +13,7 @@ namespace PicasionBot.IntegrationTests.Controllers
 
     public class ProbeControllerShould : IClassFixture<WebApplicationFactory<Startup>>
     {
+        private const string ControllerBaseUri = "/probe";
         private readonly HttpClient client;
 
         public ProbeControllerShould(WebApplicationFactory<Startup> factory)
@@ -23,8 +24,15 @@ namespace PicasionBot.IntegrationTests.Controllers
         [Fact]
         public async Task ReturnOk_WhenReadyIsCalled()
         {
-            const string ControllerBaseUri = "/probe";
             var result = await this.client.GetAsync($"{ControllerBaseUri}/ready");
+
+            result.EnsureSuccessStatusCode();
+        }
+
+        [Fact]
+        public async Task ReturnOk_WhenAliveIsCalled()
+        {
+            var result = await this.client.GetAsync($"{ControllerBaseUri}/alive");
 
             result.EnsureSuccessStatusCode();
         }
