@@ -12,5 +12,12 @@ namespace PicasionBot.Controllers
         {
             return Ok();
         }
+
+        [HttpGet]
+        [Route("alive")]
+        public IActionResult IsAlive()
+        {
+            return Ok();
+        }
     }
 }
